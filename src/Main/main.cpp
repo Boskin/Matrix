@@ -7,7 +7,7 @@
 int main(int argc, char* argv[]) {
     Matrix test1, test2, result;
     
-    printf("Addition test!\n");
+    printf("Addition/Subtraction test!\n");
     test1 = Matrix(3, 3);
     test2 = Matrix(3, 3);
     
@@ -25,7 +25,11 @@ int main(int argc, char* argv[]) {
     printf("test2:\n");
     test2.consolePrint(WIDTH, DECIMALS);
     
-    printf("result:\n");
+    printf("sum:\n");
+    result.consolePrint(WIDTH, DECIMALS);
+    
+    result = test1 - test2;
+    printf("difference:\n");
     result.consolePrint(WIDTH, DECIMALS);
     
     printf("\nMultiplication test!\n");
@@ -51,7 +55,7 @@ int main(int argc, char* argv[]) {
     test2[2][0] = 7;
     test2[2][1] = 9;
     
-    result = test1 * test2; // Multiply the matrices and store the result in tes1
+    result = test1 * test2; // Multiply the matrices and store the result in test1
     
     printf("test1:\n");
     test1.consolePrint(WIDTH, DECIMALS);
