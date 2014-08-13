@@ -62,6 +62,9 @@ int main(int argc, char* argv[]) {
     printf("result:\n");
     result.consolePrint(WIDTH, DECIMALS); // Print the result
     
+    printf("transposed:\n");
+    result.transpose().consolePrint(WIDTH, DECIMALS);
+    
     printf("\nIdentity matrix test!\n");
     
     // Create a 2x2 matrix

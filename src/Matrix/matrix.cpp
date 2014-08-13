@@ -123,6 +123,24 @@ void Matrix::consolePrint(unsigned int minNumWidth, unsigned int decimalPlaces) 
     }
 }
 
+Matrix Matrix::transpose() const {
+    Matrix retVal;
+    
+    if(rows > 0 && cols > 0) {
+        retVal.rows = this->cols;
+        retVal.cols = this->rows;
+        retVal.initialize();
+        
+        for(unsigned int i = 0; i < retVal.rows; i++) {
+            for(unsigned int j = 0; j < retVal.cols; j++) {
+                retVal.numbers[i][j] = this->numbers[j][i];
+            }
+        }
+    }
+    
+    return retVal;
+}
+
 /* Return a reference to row r, then use another set of braces
    in order to get the individual element, return the first row
    by default */

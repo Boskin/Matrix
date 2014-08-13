@@ -48,6 +48,8 @@ class Matrix {
     // Prints to stdout
     void consolePrint(unsigned int minNumWidth, unsigned int decimalPlaces) const;
     
+    Matrix transpose() const;
+    
     /* Returns the desired row, a second set of braces should be used to
        access an individual element */
     Row& operator[](unsigned int r);
