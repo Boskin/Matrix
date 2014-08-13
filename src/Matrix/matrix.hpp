@@ -1,8 +1,6 @@
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
 
-double round(double num, double place);
-
 class Matrix;
 
 /* Class used to point to the start of rows so that matrix modification 
