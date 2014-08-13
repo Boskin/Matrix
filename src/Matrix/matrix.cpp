@@ -1,3 +1,4 @@
+#include <cassert>
 #include <cstdio>
 #include "matrix.hpp"
 
@@ -22,12 +23,14 @@ double& Row::operator[](unsigned int pos) {
 Matrix::Matrix(): rows(0), cols(0), numbers(0), rowRefs(0) {}
 
 // Construct a matrix with the desired dimensions
-Matrix::Matrix(unsigned int _rows, unsigned int _cols): C(rows), C(cols) {
+Matrix::Matrix(unsigned int _rows, unsigned int _cols): C(rows), C(cols),
+                                                        numbers(0), rowRefs(0) {
     initialize();
 }
 
 // Copy a matrix
-Matrix::Matrix(const Matrix& rhs): rows(rhs.rows), cols(rhs.cols) {
+Matrix::Matrix(const Matrix& rhs): rows(rhs.rows), cols(rhs.cols),
+                                   numbers(0), rowRefs(0) {
     initialize();
     for(unsigned int i = 0; i < rows; i++) {
         for(unsigned int j = 0; j < cols; j++) {
@@ -45,10 +48,13 @@ void Matrix::initialize() {
     if(rows > 0 && cols > 0) {
         // Allocate a contiguous 2d array in the heap
         numbers = new double*[rows];
+        assert(numbers);
         numbers[0] = new double[rows * cols];
+        assert(numbers[0]);
         
         // Make references to each row
         rowRefs = new Row[rows];
+        assert(rowRefs);
         rowRefs[0].numLocation = numbers[0];
         rowRefs[0].size = cols;
         
@@ -222,7 +228,7 @@ Matrix Matrix::operator*(Matrix other) const {
             for(unsigned int j = 0; j < retVal.cols; j++) {
                 retVal[i][j] = 0;
                 for(unsigned int k = 0; k < this->cols; k++) {
-                    retVal[i][j] += this->numbers[i][j] * other.numbers[i][j];
+                    retVal[i][j] += this->numbers[i][k] * other.numbers[k][j];
                 }
             }
         }
