@@ -68,6 +68,9 @@ class Matrix {
     Matrix& operator*=(Matrix other);
     Matrix& operator/=(double scalar);
     
+    // Comparison operators
+    bool operator==(Matrix& other);
+    
     Matrix(); // Construct an empty matrix
     Matrix(unsigned int _rows, unsigned int _cols);
     Matrix(const Matrix& rhs);

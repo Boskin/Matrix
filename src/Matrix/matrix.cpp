@@ -254,3 +254,24 @@ Matrix& Matrix::operator/=(double scalar) {
     *this = *this / scalar;
     return *this;
 }
+
+// Checks if the dimensions and elements of two matrices are the same
+bool Matrix::operator==(Matrix& other) {
+    // Check if the dimensions are the same
+    if(this->rows == other.rows && this->cols == other.cols) {
+        // Check each individual pair of elements
+        for(unsigned int i = 0; i < rows; i++) {
+            for(unsigned int j = 0; j < cols; j++) {
+                if((*this)[i][j] != other[i][j]) {
+                    return false;
+                }
+            }
+        }
+        
+        /* If the function does not return in the middle of the loop,
+           all corresponding elements are equal, so return true */
+        return true;
+    }
+    
+    return false;
+}
