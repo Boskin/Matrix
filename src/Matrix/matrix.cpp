@@ -93,13 +93,21 @@ Matrix Matrix::identity(unsigned int side) {
     return retVal;
 }
 
-bool Matrix::isValid() {
+unsigned int Matrix::getRows() const {
+    return rows;
+}
+
+unsigned int Matrix::getCols() const {
+    return cols;
+}
+
+bool Matrix::isValid() const {
     // Check if numbers is intialized
     return numbers;
 }
 
 // Print to the console with the desired format
-void Matrix::consolePrint(unsigned int minNumWidth, unsigned int decimalPlaces) {
+void Matrix::consolePrint(unsigned int minNumWidth, unsigned int decimalPlaces) const {
     for(unsigned int i = 0; i < rows; i++) {
         printf("|");
         for(unsigned int j = 0; j < cols; j++) {

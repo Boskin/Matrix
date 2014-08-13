@@ -40,11 +40,15 @@ class Matrix {
     // Returns a square identity matrix with the given side dimension
     static Matrix identity(unsigned int side);
     
+    // Accessors to dimensions
+    unsigned int getRows() const;
+    unsigned int getCols() const;
+    
     // Tells whether the matrix is valid
-    bool isValid();
+    bool isValid() const;
     
     // Prints to stdout
-    void consolePrint(unsigned int minNumWidth, unsigned int decimalPlaces);
+    void consolePrint(unsigned int minNumWidth, unsigned int decimalPlaces) const;
     
     /* Returns the desired row, a second set of braces should be used to
        access an individual element */
