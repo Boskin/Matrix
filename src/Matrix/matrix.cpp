@@ -159,7 +159,7 @@ Matrix& Matrix::operator=(double elements[]) {
     return *this;
 }
 
-Matrix Matrix::operator+(Matrix other) {
+Matrix Matrix::operator+(Matrix other) const {
     // Matrix tht will be returned, empty by default
     Matrix retVal;
     
@@ -174,7 +174,7 @@ Matrix Matrix::operator+(Matrix other) {
            result's corresponding entries */
         for(unsigned int i = 0; i < rows; i++) {
             for(unsigned int j = 0; j < cols; j++) {
-                retVal[i][j] = (*this)[i][j] + other[i][j];
+                retVal[i][j] = this->numbers[i][j] + other.numbers[i][j];
             }
         }
     }
@@ -183,11 +183,11 @@ Matrix Matrix::operator+(Matrix other) {
 }
 
 // Multiply the second operand by -1 and add in order to produce a subtraction
-Matrix Matrix::operator-(Matrix other) {
+Matrix Matrix::operator-(Matrix other) const {
     return (*this) + (other * -1);
 }
 
-Matrix Matrix::operator*(double scalar) {
+Matrix Matrix::operator*(double scalar) const {
     // Matrix that will be returned
     Matrix retVal;
     
@@ -199,14 +199,14 @@ Matrix Matrix::operator*(double scalar) {
     // Multiply each matrix element by the given scalar to get the result
     for(unsigned int i = 0; i < rows; i++) {
         for(unsigned int j = 0; j < cols; j++) {
-            retVal[i][j] = (*this)[i][j] * scalar;
+            retVal[i][j] = this->numbers[i][j] * scalar;
         }
     }
     
     return retVal;
 }
 
-Matrix Matrix::operator*(Matrix other) {
+Matrix Matrix::operator*(Matrix other) const {
     // Matrix that will be returned, empty by default
     Matrix retVal;
     
@@ -222,7 +222,7 @@ Matrix Matrix::operator*(Matrix other) {
             for(unsigned int j = 0; j < retVal.cols; j++) {
                 retVal[i][j] = 0;
                 for(unsigned int k = 0; k < this->cols; k++) {
-                    retVal[i][j] += (*this)[i][k] * other[k][j];
+                    retVal[i][j] += this->numbers[i][j] * other.numbers[i][j];
                 }
             }
         }
@@ -231,7 +231,7 @@ Matrix Matrix::operator*(Matrix other) {
     return retVal;
 }
 
-Matrix Matrix::operator/(double scalar) {
+Matrix Matrix::operator/(double scalar) const {
     // Multiply by the reciprocal of the scalar to perform division
     return (*this) * (1 / scalar);
 }

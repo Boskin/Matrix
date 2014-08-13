@@ -59,11 +59,11 @@ class Matrix {
     Matrix& operator=(double elements[]);
     
     // Arithmetic matrix operations
-    Matrix operator+(Matrix other);
-    Matrix operator-(Matrix other);
-    Matrix operator*(double scalar);
-    Matrix operator*(Matrix other);
-    Matrix operator/(double scalar);
+    Matrix operator+(Matrix other) const;
+    Matrix operator-(Matrix other) const;
+    Matrix operator*(double scalar) const;
+    Matrix operator*(Matrix other) const;
+    Matrix operator/(double scalar) const;
     
     // Shortcuts for arithmetic and assignment operations
     Matrix& operator+=(Matrix other);
