@@ -264,13 +264,13 @@ Matrix& Matrix::operator/=(double scalar) {
 }
 
 // Checks if the dimensions and elements of two matrices are the same
-bool Matrix::operator==(Matrix& other) {
+bool Matrix::operator==(Matrix& other) const {
     // Check if the dimensions are the same
     if(this->rows == other.rows && this->cols == other.cols) {
         // Check each individual pair of elements
         for(unsigned int i = 0; i < rows; i++) {
             for(unsigned int j = 0; j < cols; j++) {
-                if((*this)[i][j] != other[i][j]) {
+                if(this->numbers[i][j] != other.numbers[i][j]) {
                     return false;
                 }
             }

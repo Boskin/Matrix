@@ -73,7 +73,7 @@ class Matrix {
     Matrix& operator/=(double scalar);
     
     // Comparison operators
-    bool operator==(Matrix& other);
+    bool operator==(Matrix& other) const;
     
     Matrix(); // Construct an empty matrix
     Matrix(unsigned int _rows, unsigned int _cols);
