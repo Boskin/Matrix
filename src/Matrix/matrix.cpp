@@ -111,7 +111,7 @@ void Matrix::consolePrint(unsigned int minNumWidth, unsigned int decimalPlaces) 
     for(unsigned int i = 0; i < rows; i++) {
         printf("|");
         for(unsigned int j = 0; j < cols; j++) {
-            printf("%*.*f ", minNumWidth, decimalPlaces, (*this)[i][j]);
+            printf("%*.*f ", minNumWidth, decimalPlaces, numbers[i][j]);
         }
         printf("|\n");
     }
