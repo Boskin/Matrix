@@ -37,10 +37,13 @@ class Matrix {
     void deinitialize();
     
     public:
+    // Returns a square identity matrix with the given side dimension
+    static Matrix identity(unsigned int side);
+    
     // Tells whether the matrix is valid
     bool isValid();
     
-    // Print to stdout
+    // Prints to stdout
     void consolePrint(unsigned int minNumWidth, unsigned int decimalPlaces);
     
     /* Returns the desired row, a second set of braces should be used to
@@ -49,6 +52,7 @@ class Matrix {
     
     // Assignment operator 
     Matrix& operator=(Matrix other);
+    Matrix& operator=(double elements[]);
     
     // Arithmetic matrix operations
     Matrix operator+(Matrix other);

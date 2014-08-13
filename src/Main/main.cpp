@@ -11,13 +11,13 @@ int main(int argc, char* argv[]) {
     test1 = Matrix(3, 3);
     test2 = Matrix(3, 3);
     
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
-            test1[i][j] = i + j;
-            test2[i][j] = i * j;
-        }
-    }
-    result = test1 + test2;
+    test1 = (double*)(const double[]){1, 1, 1,
+                                      2, 2, 2,
+                                      3, 3, 3};
+             
+    test2 = (double*)(const double[]){3, 3, 3,
+                                      2, 2, 2,
+                                      1, 1, 1};
     
     printf("test1:\n");
     test1.consolePrint(WIDTH, DECIMALS);
@@ -25,6 +25,7 @@ int main(int argc, char* argv[]) {
     printf("test2:\n");
     test2.consolePrint(WIDTH, DECIMALS);
     
+    result = test1 + test2;
     printf("sum:\n");
     result.consolePrint(WIDTH, DECIMALS);
     
@@ -33,29 +34,16 @@ int main(int argc, char* argv[]) {
     result.consolePrint(WIDTH, DECIMALS);
     
     printf("\nMultiplication test!\n");
-    /*
-    test1:
-    [1 4 6]
-    */
-    test1 = Matrix(1, 3);
-    test1[0][0] = 1;
-    test1[0][1] = 4;
-    test1[0][2] = 6;
-    /*
-    test2:
-    [2 3]
-    [5 8]
-    [7 9]
-    */
-    test2 = Matrix(3, 2);
-    test2[0][0] = 2;
-    test2[0][1] = 3;
-    test2[1][0] = 5;
-    test2[1][1] = 8;
-    test2[2][0] = 7;
-    test2[2][1] = 9;
     
-    result = test1 * test2; // Multiply the matrices and store the result in test1
+    test1 = Matrix(1, 3);
+    test1 = (double*)(const double[]){1, 4, 6};
+    
+    test2 = Matrix(3, 2);
+    test2 = (double*)(const double[]){2, 3,
+                                      5, 8,
+                                      7, 9};
+    
+    result = test1 * test2; // Multiply the matrices
     
     printf("test1:\n");
     test1.consolePrint(WIDTH, DECIMALS);
@@ -65,6 +53,25 @@ int main(int argc, char* argv[]) {
     
     printf("result:\n");
     result.consolePrint(WIDTH, DECIMALS); // Print the result
+    
+    printf("\nIdentity matrix test!\n");
+    
+    test1 = Matrix(2, 2);
+    test1 = (double*)(const double[]){1, 2,
+                                      3, 4};
+    
+    test2 = Matrix::identity(2);
+    
+    result = test1 * test2;
+    
+    printf("test1:\n");
+    test1.consolePrint(WIDTH, DECIMALS);
+    
+    printf("test2:\n");
+    test2.consolePrint(WIDTH, DECIMALS);
+    
+    printf("result:\n");
+    result.consolePrint(WIDTH, DECIMALS);
     
     return 0;
 }

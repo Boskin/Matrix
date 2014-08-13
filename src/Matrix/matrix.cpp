@@ -74,6 +74,25 @@ void Matrix::deinitialize() {
     }
 }
 
+Matrix Matrix::identity(unsigned int side) {
+    // Result matrix, empty by default
+    Matrix retVal;
+    
+    // Make sure the side is greater than 0
+    if(side > 0) {
+        // Intiailze a matrix with the given side as dimensions
+        retVal = Matrix(side, side);
+        // Assign the elements appropriately for an identity matrix
+        for(unsigned int i = 0; i < retVal.rows; i++) {
+            for(unsigned int j = 0; j < retVal.cols; j++) {
+                retVal[i][j] = i != j ? 0 : 1;
+            }
+        }
+    }
+    
+    return retVal;
+}
+
 bool Matrix::isValid() {
     // Check if numbers is intialized
     return numbers;
@@ -101,6 +120,7 @@ Row& Matrix::operator[](unsigned int r) {
     }
 }
 
+// Assign another matrix's elements into the caller matrix
 Matrix& Matrix::operator=(Matrix other) {
     // Reinitialize the calling matrix
     this->deinitialize();
@@ -118,11 +138,24 @@ Matrix& Matrix::operator=(Matrix other) {
     return *this;
 }
 
+// Assign a 1D array of numbers to the matrix
+Matrix& Matrix::operator=(double elements[]) {
+    // Copy the array's contents into the matrix
+    for(unsigned int i = 0, counter = 0; i < rows; i++) {
+        for(unsigned int j = 0; j < cols; j++) {
+            // Each row is every n elements if n is the column size
+            numbers[i][j] = elements[counter++];
+        }
+    }
+    
+    return *this;
+}
+
 Matrix Matrix::operator+(Matrix other) {
     // Matrix tht will be returned, empty by default
     Matrix retVal;
     
-    // Chekc to make sure the two operands have the same dimensions
+    // Check to make sure the two operands have the same dimensions
     if(this->rows == other.rows && this->cols == other.cols) {
         // Intialize the result matrix with the correct dimensions
         retVal.rows = rows;
