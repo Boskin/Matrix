@@ -16,9 +16,9 @@ int main(int argc, char* argv[]) {
                                       3, 3, 3};
     
     test2 = Matrix(3, 3);
-    test2 = (double*)(const double[]){3, 3, 3,
-                                      2, 2, 2,
-                                      1, 1, 1};
+    test2 = (double*)(const double[]){4, 5, 6,
+                                      4, 5, 6,
+                                      4, 5, 6};
     
     // Print the results
     printf("test1:\n");
